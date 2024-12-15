@@ -23,7 +23,12 @@ export class App extends React.Component {
 
   componentDidMount() {
     this.timerId = window.setInterval(() => {
-      this.setState({ clockName: getRandomName() });
+      const oldName = this.state.clockName;
+      const newName = getRandomName();
+
+      this.setState({ clockName: newName });
+      // eslint-disable-next-line no-console
+      console.warn(`Renamed from ${oldName} to ${newName}`);
     }, 3300);
 
     document.addEventListener('contextmenu', (event: MouseEvent) => {
